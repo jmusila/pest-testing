@@ -11,4 +11,6 @@ class Todo extends Model
 
     const COMPLETED = true;
     const INCOMPLETE = false;
+
+    protected $fillable = ['name', 'completed'];
 }
