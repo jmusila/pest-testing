@@ -23,7 +23,7 @@ class TodoFactory extends Factory
     {
         return [
             'name' => 'Learn TDD and become a pro',
-            'completetd' => Todo::INCOMPLETE
+            'completed' => Todo::INCOMPLETE
         ];
     }
 }
