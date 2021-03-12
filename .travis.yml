@@ -1,0 +1,19 @@
+language: php
+php: 
+  - 7.3
+  - 7.4
+os: linux
+
+before_script:
+  - rm -rf composer.lock
+  - composer install
+  - cp .env.example .env
+
+script:
+  - mkdir -p build/logs
+  - ./vendor/bin/pest -c phpunit.xml
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
+  # enable logging
+  - travis_retry php vendor/bin/coveralls -v
