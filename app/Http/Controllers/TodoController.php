@@ -107,5 +107,4 @@ class TodoController extends Controller
             'completed' => $todo->completed
         ];
     }
-    
 }
