@@ -31,6 +31,24 @@ class TodoController extends Controller
         return response()->json($data, 200);
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate(($this->rules()));
+
+        $todo = $this->getTodo($id);
+
+        $todo->update($request->get('name'));
+
+        $todo->refresh();
+
+        $data = [
+            'msg' => 'Todo updated successfully',
+            'todo' => $this->mapTodoResponse($todo)
+        ];
+
+        return response()->json($data, 200);
+    }
+
     public function rules()
     {
         return [
