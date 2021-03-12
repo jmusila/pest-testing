@@ -49,6 +49,19 @@ class TodoController extends Controller
         return response()->json($data, 200);
     }
 
+    public function delete($id)
+    {
+        $todo = $this->getTodo($id);
+
+        $todo->delete();
+
+        $data = [
+            'msg' => 'Todo deleted successfully'
+        ];
+
+        return response()->json($data, 200);
+    }
+
     public function rules()
     {
         return [
