@@ -11,14 +11,18 @@ class TodoController extends Controller
     {
         $request->validate($this->rules());
 
-        $todo = Todo::create($request->get('name'));
+        $todo = new Todo([
+            'name' => $request->get('name')
+        ]);
+
+        $todo->save();
 
         $data = [
             'msg' => 'Todo created successfully',
             'todo' => $this->mapTodoResponse($todo)
         ];
 
-        return response()->json($data, 200);
+        return response()->json($data, 201);
     }
 
     public function show($id)
@@ -37,9 +41,9 @@ class TodoController extends Controller
 
         $todo = $this->getTodo($id);
 
-        $todo->update($request->get('name'));
-
-        $todo->refresh();
+        $todo->update([
+            'name' => $request->get('name')
+        ]);
 
         $data = [
             'msg' => 'Todo updated successfully',
@@ -87,7 +91,7 @@ class TodoController extends Controller
         return [
             'id' => $todo->id,
             'name' => $todo->name,
-            'competed' => $todo->completed
+            'completed' => $todo->completed
         ];
     }
 }

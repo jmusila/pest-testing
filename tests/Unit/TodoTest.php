@@ -37,7 +37,7 @@ it('can fetch a single todo', function () {
 });
 
 it('can update a todo', function () {
-    $todo = Todo::factory()->created();
+    $todo = Todo::factory()->create();
     $updatedTodo = ['name' => 'Upadted Todo'];
     $response = $this->putJson("/api/todos/{$todo->id}", $updatedTodo);
     $response->assertStatus(200)->assertJson([
