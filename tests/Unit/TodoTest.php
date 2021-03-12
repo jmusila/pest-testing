@@ -45,3 +45,12 @@ it('can update a todo', function () {
     ]);
     $this->assertDatabaseHas('todos', $updatedTodo);
 });
+
+it('can delete a todo', function(){
+    $todo = Todo::factory()->create();
+    $response = $this->deleteJson("/api/todos/{$todo->id}");
+    $response->assertStatus(200)->assertJson([
+        'msg' => 'Todo deleted successfully'
+    ]);
+    $this->assertCount(0, Todo::all());
+});
