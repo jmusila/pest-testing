@@ -16,4 +16,4 @@ script:
 after_success:
   - travis_retry php vendor/bin/coveralls
   # enable logging
-  - travis_retry php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/coveralls -v 
