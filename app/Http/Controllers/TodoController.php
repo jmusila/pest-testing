@@ -34,7 +34,7 @@ class TodoController extends Controller
                 'msg' => "Todo with id {$id} not found"
             ], 404);
         }
-        
+
         $data = [
             'msg' => 'Todo retrived successfully',
             'todo' => $this->mapTodoResponse($todo)
@@ -107,4 +107,5 @@ class TodoController extends Controller
             'completed' => $todo->completed
         ];
     }
+    
 }
