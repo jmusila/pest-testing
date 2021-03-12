@@ -46,7 +46,7 @@ it('can update a todo', function () {
     $this->assertDatabaseHas('todos', $updatedTodo);
 });
 
-it('can delete a todo', function(){
+it('can delete a todo', function () {
     $todo = Todo::factory()->create();
     $response = $this->deleteJson("/api/todos/{$todo->id}");
     $response->assertStatus(200)->assertJson([
@@ -54,3 +54,7 @@ it('can delete a todo', function(){
     ]);
     $this->assertCount(0, Todo::all());
 });
+
+// it('cannot find unexisting todo', function(){
+//     $response = $this->getJson("/api/todos/{$todo->id}");
+// });

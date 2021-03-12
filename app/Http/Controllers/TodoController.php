@@ -23,7 +23,12 @@ class TodoController extends Controller
 
     public function show($id)
     {
-
+        $todo = $this->getTodo($id);
+        $data = [
+            'msg' => 'Todo retrived successfully',
+            'todo' => $this->mapTodoResponse($todo)
+        ];
+        return response()->json($data, 200);
     }
 
     public function rules()
@@ -37,9 +42,9 @@ class TodoController extends Controller
     {
         $todo = Todo::where('id', $id)->first();
 
-        if (is_null($todo)){
+        if (is_null($todo)) {
             return response()->json([
-                'msg' => "Todo with id {$todo->id} not found"
+                'msg' => "Todo with id {$id} not found"
             ], 404);
         }
 
