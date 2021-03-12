@@ -70,3 +70,12 @@ it('cannot delete unexisting todo', function () {
     ];
     $response->assertStatus(404)->assertJson($data);
 });
+
+it('cannot update unexisting todo', function () {
+    $updatedTodo = ['name' => 'Upadted Todo'];
+    $response = $this->putJson("/api/todos/2", $updatedTodo);
+    $data = [
+        'msg' => "Todo with id 2 not found"
+    ];
+    $response->assertStatus(404)->assertJson($data);
+});
