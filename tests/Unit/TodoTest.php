@@ -35,3 +35,13 @@ it('can fetch a single todo', function () {
 
     $response->assertStatus(200)->assertJson($data);
 });
+
+it('can update a todo', function () {
+    $todo = Todo::factory()->created();
+    $updatedTodo = ['name' => 'Upadted Todo'];
+    $response = $this->putJson("/api/todos/{$todo->id}", $updatedTodo);
+    $response->assertStatus(200)->assertJson([
+        'msg' => 'Todo updated successfully'
+    ]);
+    $this->assertDatabaseHas('todos', $updatedTodo);
+});
