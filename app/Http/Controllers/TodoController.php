@@ -21,11 +21,29 @@ class TodoController extends Controller
         return response()->json($data, 200);
     }
 
+    public function show($id)
+    {
+
+    }
+
     public function rules()
     {
         return [
             'name' => 'required|string|min:4'
         ];
+    }
+
+    public function getTodo($id)
+    {
+        $todo = Todo::where('id', $id)->first();
+
+        if (is_null($todo)){
+            return response()->json([
+                'msg' => "Todo with id {$todo->id} not found"
+            ], 404);
+        }
+
+        return $todo;
     }
 
     public function mapTodoResponse($todo)
