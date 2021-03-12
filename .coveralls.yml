@@ -1,5 +1,9 @@
 coverage_clover: build/logs/clover.xml
 
 
-# coverage_clover: build/logs/clover-*.xml
+coverage_clover: build/logs/clover-*.xml
 
+coverage_clover:
+  - build/logs/clover-Auth.xml
+  - build/logs/clover-Db.xml
+  - build/logs/clover-Validator.xml
