@@ -28,6 +28,13 @@ class TodoController extends Controller
     public function show($id)
     {
         $todo = $this->getTodo($id);
+
+        if (is_null($todo)) {
+            return response()->json([
+                'msg' => "Todo with id {$id} not found"
+            ], 404);
+        }
+        
         $data = [
             'msg' => 'Todo retrived successfully',
             'todo' => $this->mapTodoResponse($todo)
@@ -40,6 +47,12 @@ class TodoController extends Controller
         $request->validate(($this->rules()));
 
         $todo = $this->getTodo($id);
+
+        if (is_null($todo)) {
+            return response()->json([
+                'msg' => "Todo with id {$id} not found"
+            ], 404);
+        }
 
         $todo->update([
             'name' => $request->get('name')
@@ -56,6 +69,12 @@ class TodoController extends Controller
     public function delete($id)
     {
         $todo = $this->getTodo($id);
+
+        if (is_null($todo)) {
+            return response()->json([
+                'msg' => "Todo with id {$id} not found"
+            ], 404);
+        }
 
         $todo->delete();
 
@@ -76,12 +95,6 @@ class TodoController extends Controller
     public function getTodo($id)
     {
         $todo = Todo::where('id', $id)->first();
-
-        if (is_null($todo)) {
-            return response()->json([
-                'msg' => "Todo with id {$id} not found"
-            ], 404);
-        }
 
         return $todo;
     }
