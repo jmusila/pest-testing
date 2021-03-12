@@ -8,6 +8,7 @@ before_script:
   - rm -rf composer.lock
   - composer install
   - cp .env.example .env
+  - php artisan key:generate
 
 script:
   - mkdir -p build/logs
