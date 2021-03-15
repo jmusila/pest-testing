@@ -18,3 +18,6 @@ Route::get('/todos/{id}', 'App\Http\Controllers\TodoController@show');
 Route::post('/todos', 'App\Http\Controllers\TodoController@create');
 Route::put('/todos/{id}', 'App\Http\Controllers\TodoController@update');
 Route::delete('/todos/{id}', 'App\Http\Controllers\TodoController@delete');
+
+/** User routes */
+Route::post('/users', 'App\Http\Controllers\UserController@create');
