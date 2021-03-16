@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'remember_token' => null,
             'created_at' => now(),
             'updated_at' => now()
-        ];
+        ]; 
     }
 
     /**
