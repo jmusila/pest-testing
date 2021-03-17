@@ -39,6 +39,12 @@ class UserController extends Controller
 
     public function validateUser(Request $request)
     {
-        
+        $rules = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
+        ]);
+
+        return $rules;
     }
 }
