@@ -22,6 +22,8 @@ it('cannot create a user without name', function(){
         'password' => 'testPass'
     ]);
     $response->assertStatus(422)->assertJson([
-        'name' => 'The name field is required'
+        'name' => [
+            'The name field is required'
+        ]
     ]);
 });
