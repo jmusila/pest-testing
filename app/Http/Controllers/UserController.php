@@ -12,6 +12,13 @@ class UserController extends Controller
 {
     public function create(Request $request)
     {
+        $validator = $this->validateUser($request);
+
+        if ($validator->fails()) {
+            return response()->json([
+                $validator->errors()
+            ], 422);
+        }
         $user = new User([
             'name' => $request->get('name'),
             'password' => Hash::make($request->get('password')),
