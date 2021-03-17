@@ -38,3 +38,17 @@ it('cannot create a user without password', function () {
     ]);
     $response->assertStatus(422);
 });
+
+it('cannot create a user with duplicate email', function(){
+    $attributes = [
+        'name' => 'John Doe',
+        'email' => 'test@johndoe.com',
+        'password' => 'Password'
+    ];
+    $response = $this->postJson('api/users', $attributes);
+    $response->assertStatus(201)->assertJson([
+        'msg' => 'User created successfully'
+    ]);
+    $response2 = $this->postJson('api/users', $attributes);
+    $response2->assertStatus(422);
+});
