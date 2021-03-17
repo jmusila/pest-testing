@@ -15,6 +15,13 @@ it('can create a user', function () {
 });
 
 
-it('cannot create a user without email', function(){
-
+it('cannot create a user without name', function(){
+    $this->withoutExceptionHandling();
+    $response = $this->postJson('/api/users', [
+        'email' => 'test@gmail.com',
+        'password' => 'testPass'
+    ]);
+    $response->assertStatus(422)->assertJson([
+        'name' => 'The name field is required'
+    ]);
 });
