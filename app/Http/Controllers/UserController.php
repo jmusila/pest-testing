@@ -36,4 +36,9 @@ class UserController extends Controller
             'email' => $user->email
         ];
     }
+
+    public function validateUser(Request $request)
+    {
+        
+    }
 }
