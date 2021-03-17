@@ -6,11 +6,15 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(Tests\TestCase::class, RefreshDatabase::class);
 
 it('can create a user', function () {
-    $this->withoutExceptionHandling();
     $attributes = User::factory()->raw();
     $response = $this->postJson('api/users', $attributes);
     $response->assertStatus(201)->assertJson([
         'msg' => 'User created successfully'
     ]);
     // $this->assertDatabaseHas('users', $attributes);
+});
+
+
+it('cannot create a user without email', function(){
+
 });
