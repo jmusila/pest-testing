@@ -4,7 +4,7 @@
 
 ### Getting Started
 - Clone the repository:
-    `$https://github.com/jmusila/pest-testing.git`
+    [Pest Testing Framework]($https://github.com/jmusila/pest-testing.git)
 - Navigate to the repo 
 
 ### Prerequisites
