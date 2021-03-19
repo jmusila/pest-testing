@@ -20,4 +20,4 @@
     run $php artisan key:generate
 ```
 ### Running Tests
-``` php artisan test ```
+``` $php artisan test ```
