@@ -1,12 +1,8 @@
 coverage:
-  round: down
-  precision: 5
-
-coverage: 
-  round: up
-  range: 0..10
-
-coverage:
-  round: up 
-  range: 0..10
-  precision: 5
+  status:
+    project:
+      default:
+        informational: true
+      patch:
+        default:
+          informational: true
