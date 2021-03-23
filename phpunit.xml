@@ -18,7 +18,6 @@
         </include>
     </coverage>
     <logging>
-        <log type="coverage-html" target="tests/coverage" showUncoveredFiles="true" />
         <log type="coverage-clover" target="clover.xml" />
     </logging>
     <php>
