@@ -5,9 +5,15 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(Tests\TestCase::class, RefreshDatabase::class);
 
-it('can create a user', function () {
+$base_url = 'api/users';
+
+$test_user = [
+    
+];
+
+it('can create a user', function () use($base_url) {
     $attributes = User::factory()->raw();
-    $response = $this->postJson('api/users', $attributes);
+    $response = $this->postJson("{$base_url}", $attributes);
     $response->assertStatus(201)->assertJson([
         'msg' => 'User created successfully'
     ]);
