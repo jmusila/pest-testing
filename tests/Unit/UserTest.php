@@ -8,22 +8,13 @@ uses(Tests\TestCase::class, RefreshDatabase::class);
 
 $base_url = 'api/users';
 
-$test_user = [
-    'name' => 'Jonh Doe',
-    'email' => 'johndoe@test.com',
-    'email_verified_at' => null,
-    'password' => 'password',
-    'remember_token' => null,
-    'created_at' => Carbon::now(),
-    'updated_at' => Carbon::now()
-];
-
-it('can create a user', function () use($base_url, $test_user) {
+it('can create a user', function () use($base_url) {
+    $test_user = User::factory()->raw();
     $response = $this->postJson("{$base_url}", $test_user);
     $response->assertStatus(201)->assertJson([
         'msg' => 'User created successfully'
     ]);
-    // $this->assertDatabaseHas('users', $test_user[0]);
+    $this->assertDatabaseHas('users', ['id' => 1]);
 });
 
 
