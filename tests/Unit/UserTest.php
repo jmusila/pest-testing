@@ -8,7 +8,7 @@ uses(Tests\TestCase::class, RefreshDatabase::class);
 
 $base_url = 'api/users';
 
-it('can create a user', function () use($base_url) {
+it('can create a user', function () use ($base_url) {
     $test_user = User::factory()->raw();
     $response = $this->postJson("{$base_url}", $test_user);
     $response->assertStatus(201)->assertJson([
@@ -29,7 +29,7 @@ it('cannot create a user without name', function () {
 it('cannot create a user without email', function () {
     $response = $this->postJson('api/users', [
         'name' => 'testName',
-        'password' => 'testPass' 
+        'password' => 'testPass'
     ]);
     $response->assertStatus(422);
 });
@@ -37,12 +37,12 @@ it('cannot create a user without email', function () {
 it('cannot create a user without password', function () {
     $response = $this->postJson('api/users', [
         'email' => 'test@gmail.com',
-        'password' => 'testPass' 
+        'password' => 'testPass'
     ]);
     $response->assertStatus(422);
 });
 
-it('cannot create a user with duplicate email', function(){
+it('cannot create a user with duplicate email', function () {
     $attributes = [
         'name' => 'John Doe',
         'email' => 'test@johndoe.com',
