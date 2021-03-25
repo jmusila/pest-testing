@@ -35,11 +35,11 @@ class UserController extends Controller
     }
 
     public function show($id){
-        $user = $this->getTodo($id);
+        $user = $this->getUser($id);
 
         if (is_null($user)) {
             return response()->json([
-                'msg' => "Todo with id {$id} not found"
+                'msg' => "User with id {$id} not found"
             ], 404);
         }
 
