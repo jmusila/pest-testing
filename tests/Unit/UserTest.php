@@ -72,3 +72,11 @@ it('can fetch a single users', function() use($base_url){
 
     $response->assertStatus(200)->assertJson($data);
 });
+
+it('cannot get unexisting user', function () use($base_url) {
+    $response = $this->getJson("{$base_url}/2");
+    $data = [
+        'msg' => "User with id 2 not found"
+    ];
+    $response->assertStatus(404)->assertJson($data);
+});
