@@ -34,6 +34,22 @@ class UserController extends Controller
         return response()->json($data, 201);
     }
 
+    public function show($id){
+        $user = $this->getTodo($id);
+
+        if (is_null($user)) {
+            return response()->json([
+                'msg' => "Todo with id {$id} not found"
+            ], 404);
+        }
+
+        $data = [
+            'msg' => 'Todo retrived successfully',
+            'data' => $this->mapUserResponse($user)
+        ];
+        return response()->json($data, 200);
+    }
+
     public function mapUserResponse($user)
     {
         return [
@@ -41,6 +57,12 @@ class UserController extends Controller
             'name' => $user->name,
             'email' => $user->email
         ];
+    }
+
+    public function getUser($id){
+        $user = User::where('id', $id)->first();
+
+        return $user;
     }
 
     public function validateUser(Request $request)
