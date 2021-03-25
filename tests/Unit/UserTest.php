@@ -57,7 +57,7 @@ it('cannot create a user with duplicate email', function () use($base_url){
 });
 
 it('can fetch a single users', function() use($base_url){
-    $this->withoutExeptionHandling();
+    $this->withoutExceptionHandling();
     $user = User::factory()->create();
     $response = $this->getJson("{$base_url}/{$user->id}");
 

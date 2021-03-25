@@ -21,3 +21,4 @@ Route::delete('/todos/{id}', 'App\Http\Controllers\TodoController@delete');
 
 /** User routes */
 Route::post('/users', 'App\Http\Controllers\UserController@create');
+Route::get('/users/{id}', 'App\Http\Controllers\UserController@show');
