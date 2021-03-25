@@ -18,7 +18,7 @@ it('can create a user', function () use ($base_url) {
 });
 
 
-it('cannot create a user without name', function () use($base_url) {
+it('cannot create a user without name', function () use ($base_url) {
     $response = $this->postJson("{$base_url}", [
         'email' => 'test@gmail.com',
         'password' => 'testPass'
@@ -26,7 +26,7 @@ it('cannot create a user without name', function () use($base_url) {
     $response->assertStatus(422);
 });
 
-it('cannot create a user without email', function () use($base_url) {
+it('cannot create a user without email', function () use ($base_url) {
     $response = $this->postJson("{$base_url}", [
         'name' => 'testName',
         'password' => 'testPass'
@@ -34,7 +34,7 @@ it('cannot create a user without email', function () use($base_url) {
     $response->assertStatus(422);
 });
 
-it('cannot create a user without password', function () use($base_url) {
+it('cannot create a user without password', function () use ($base_url) {
     $response = $this->postJson("{$base_url}", [
         'email' => 'test@gmail.com',
         'password' => 'testPass'
@@ -42,7 +42,7 @@ it('cannot create a user without password', function () use($base_url) {
     $response->assertStatus(422);
 });
 
-it('cannot create a user with duplicate email', function () use($base_url){
+it('cannot create a user with duplicate email', function () use ($base_url) {
     $attributes = [
         'name' => 'John Doe',
         'email' => 'test@johndoe.com',
@@ -56,7 +56,7 @@ it('cannot create a user with duplicate email', function () use($base_url){
     $response2->assertStatus(422);
 });
 
-it('can fetch a single users', function() use($base_url){
+it('can fetch a single users', function () use ($base_url) {
     $this->withoutExceptionHandling();
     $user = User::factory()->create();
     $response = $this->getJson("{$base_url}/{$user->id}");
@@ -73,7 +73,7 @@ it('can fetch a single users', function() use($base_url){
     $response->assertStatus(200)->assertJson($data);
 });
 
-it('cannot get unexisting user', function () use($base_url) {
+it('cannot get unexisting user', function () use ($base_url) {
     $response = $this->getJson("{$base_url}/2");
     $data = [
         'msg' => "User with id 2 not found"

@@ -34,7 +34,8 @@ class UserController extends Controller
         return response()->json($data, 201);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $user = $this->getUser($id);
 
         if (is_null($user)) {
@@ -59,7 +60,8 @@ class UserController extends Controller
         ];
     }
 
-    public function getUser($id){
+    public function getUser($id)
+    {
         $user = User::where('id', $id)->first();
 
         return $user;
