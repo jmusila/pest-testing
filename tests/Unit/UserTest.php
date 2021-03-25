@@ -18,8 +18,8 @@ it('can create a user', function () use ($base_url) {
 });
 
 
-it('cannot create a user without name', function () {
-    $response = $this->postJson('/api/users', [
+it('cannot create a user without name', function () use($base_url) {
+    $response = $this->postJson("{$base_url}", [
         'email' => 'test@gmail.com',
         'password' => 'testPass'
     ]);
