@@ -62,7 +62,7 @@ it('can fetch a single users', function() use($base_url){
     $response = $this->getJson("{$base_url}/{$user->id}");
 
     $data = [
-        'msg' => 'Todo retrived successfully',
+        'msg' => 'User retrived successfully',
         'data' => [
             'id' => $user->id,
             'name' => $user->name,

@@ -44,7 +44,7 @@ class UserController extends Controller
         }
 
         $data = [
-            'msg' => 'Todo retrived successfully',
+            'msg' => 'User retrived successfully',
             'data' => $this->mapUserResponse($user)
         ];
         return response()->json($data, 200);
