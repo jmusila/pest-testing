@@ -89,3 +89,11 @@ it('can delete a user', function () use($base_url) {
     ]);
     $this->assertCount(0, User::all());
 });
+
+it('cannot delete unexisting user', function () use($base_url) {
+    $response = $this->deleteJson("{$base_url}/2");
+    $data = [
+        'msg' => "User with id 2 not found"
+    ];
+    $response->assertStatus(404)->assertJson($data);
+});
