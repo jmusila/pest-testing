@@ -80,3 +80,12 @@ it('cannot get unexisting user', function () use ($base_url) {
     ];
     $response->assertStatus(404)->assertJson($data);
 });
+
+it('can delete a user', function () {
+    $todo = User::factory()->create();
+    $response = $this->deleteJson("/api/todos/{$todo->id}");
+    $response->assertStatus(200)->assertJson([
+        'msg' => 'User deleted successfully'
+    ]);
+    $this->assertCount(0, User::all());
+});
