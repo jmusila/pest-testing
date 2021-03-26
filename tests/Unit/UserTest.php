@@ -81,7 +81,7 @@ it('cannot get unexisting user', function () use ($base_url) {
     $response->assertStatus(404)->assertJson($data);
 });
 
-it('can delete a user', function () use($base_url) {
+it('can delete a user', function () use ($base_url) {
     $user = User::factory()->create();
     $response = $this->deleteJson("{$base_url}/{$user->id}");
     $response->assertStatus(200)->assertJson([
@@ -90,7 +90,7 @@ it('can delete a user', function () use($base_url) {
     $this->assertCount(0, User::all());
 });
 
-it('cannot delete unexisting user', function () use($base_url) {
+it('cannot delete unexisting user', function () use ($base_url) {
     $response = $this->deleteJson("{$base_url}/2");
     $data = [
         'msg' => "User with id 2 not found"
