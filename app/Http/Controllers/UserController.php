@@ -51,6 +51,25 @@ class UserController extends Controller
         return response()->json($data, 200);
     }
 
+    public function delete($id)
+    {
+        $user = $this->getUser($id);
+
+        if (is_null($user)) {
+            return response()->json([
+                'msg' => "User with id {$id} not found"
+            ], 404);
+        }
+
+        $user->delete();
+
+        $data = [
+            'msg' => 'User deleted successfully'
+        ];
+
+        return response()->json($data, 200);
+    }
+
     public function mapUserResponse($user)
     {
         return [
