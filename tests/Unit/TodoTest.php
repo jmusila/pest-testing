@@ -65,7 +65,7 @@ it('cannot find unexisting todo', function () {
 
 it('cannot delete unexisting todo', function () {
     $response = $this->deleteJson("/api/todos/2");
-    $data = [ 
+    $data = [
         'msg' => "Todo with id 2 not found"
     ];
     $response->assertStatus(404)->assertJson($data);
